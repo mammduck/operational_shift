@@ -3,7 +3,7 @@ import pprint
 
 #######　←change these places according to the file
 
-path = "運用担当者シフト（回答）.xlsx"                             #######
+path = "answer_example.xlsx"                             #######
 
 
 startDayColumn = 7  #begin with 1                                        #######
@@ -52,9 +52,9 @@ for dayIndex in range (startDayColumn-1,endDayColumn):
     for PassListsIndex in range(len(PassLists)):
         shiftDicts[labelList[dayIndex]][PassLists[PassListsIndex]] = []
         for rowIndex in range(0,numAllRows-1):
-            if PassLists[PassListsIndex] in answerList[rowIndex][dayIndex]:
+            if PassLists[PassListsIndex] in str(answerList[rowIndex][dayIndex]):
                 shiftDicts[labelList[dayIndex]][PassLists[PassListsIndex]].append\
-                    (answerList[rowIndex][2])
+                    (str(answerList[rowIndex][2]))
 
 
 pprint.pprint(shiftDicts)
