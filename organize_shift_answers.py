@@ -77,6 +77,27 @@ for dayIndex in range (startDayColumn-1,endDayColumn):
         j=j+numAllRows+1  # +1 for the space of hour-label
 
 
+target_row = 1
+delete_boolean = True #if Ture, delete　
+while target_row < sheet_new.max_row:
+    delete_boolean = True
+    
+    for col in range(1,len(keysLists)+1):
+        
+        if not sheet_new.cell(row = target_row, column = col).value is None:
+            target_row = target_row + 1
+            delete_boolean = False
+            break
+    
+    if delete_boolean == True:
+        sheet_new.delete_rows(target_row)
+        print("delete")
+    
 
-wb.save('shift.xlsx')                                 #######
+
+
+
+path = path[0:-9] + '_arranged' + '.xlsx'
+
+wb.save(path)                                 #######
 
